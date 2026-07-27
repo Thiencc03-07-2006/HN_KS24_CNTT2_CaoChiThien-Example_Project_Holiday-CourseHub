@@ -1,0 +1,120 @@
+spring:
+  application:
+    name: coursehub
+
+  profiles:
+    active: test
+
+  # Database using H2 for testing
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=MySQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+      connection-timeout: 30000
+
+  # JPA / Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+
+  # Flyway Migration
+  flyway:
+    enabled: false
+
+  # Redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  # Mail
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: test
+    password: test
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8
+
+  # OAuth2
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: google-client-id
+            client-secret: google-client-secret
+            scope: email,profile
+            redirect-uri: "{baseUrl}/api/v1/auth/oauth2/callback/{registrationId}"
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-name-attribute: sub
+
+# Server
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  error:
+    include-message: always
+    include-binding-errors: always
+
+# JWT Configuration
+jwt:
+  secret: CourseHubSuperSecretKeyForJWT2024MustBe256BitsLongForHS256Algorithm!
+  access-token-expiration-ms: 900000      # 15 minutes
+  refresh-token-expiration-ms: 604800000  # 7 days
+  issuer: coursehub.com
+
+# Cloudinary Configuration
+cloudinary:
+  cloud-name: test
+  api-key: test
+  api-secret: test
+
+# Application specific settings
+app:
+  frontend-url: http://localhost:3000
+  otp:
+    ttl-minutes: 5
+    max-attempts: 3
+    length: 6
+  account-lockout:
+    max-attempts: 5
+    lock-duration-minutes: 15
+  password-reset:
+    ttl-minutes: 15
+  certificate:
+    template-path: classpath:/templates/certificate.html
+    s3-prefix: certificates/
+  review:
+    min-progress-percent: 30.0
+  report:
+    auto-escalate-threshold: 5
+  pagination:
+    default-page-size: 12
+    max-page-size: 100
+
+# Logging
+logging:
+  level:
+    com.coursehub: DEBUG
+    org.springframework.security: INFO

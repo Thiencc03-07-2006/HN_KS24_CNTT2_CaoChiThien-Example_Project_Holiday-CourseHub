@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES — CourseHub Light Theme
+   ============================================================ */
+:root {
+  /* --- Colors: Background --- */
+  --bg-primary: #F8FAFC;
+  --bg-white: #FFFFFF;
+
+  /* --- Colors: Primary (Blue) --- */
+  --primary: #2563EB;
+  --primary-dark: #1D4ED8;
+  --primary-hover: #3B82F6;
+  --primary-light: #EFF6FF;
+  --primary-lighter: #DBEAFE;
+
+  /* --- Colors: Legacy aliases (backward compat) --- */
+  --primary-color: #2563EB;
+  --secondary-color: #EFF6FF;
+
+  /* --- Colors: Border & Divider --- */
+  --border-color: #E5E7EB;
+  --border-light: #F3F4F6;
+
+  /* --- Colors: Text --- */
+  --text-h: #111827;
+  --text-body: #374151;
+  --text-muted: #6B7280;
+  --text-color: #111827;
+
+  /* --- Colors: State --- */
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+
+  /* --- Typography --- */
+  --sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 10px 24px rgba(0, 0, 0, 0.12);
+  --shadow-header: 0 1px 4px rgba(0, 0, 0, 0.08);
+
+  /* --- Border Radius --- */
+  --radius-sm: 6px;
+  --radius-btn: 8px;
+  --radius-input: 8px;
+  --radius-card: 12px;
+  --radius-card-lg: 16px;
+  --radius-modal: 16px;
+
+  /* --- Transitions --- */
+  --transition: all 0.2s ease;
+
+  /* --- Font base --- */
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--text-color);
+  background: var(--bg-white);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   GLOBAL RESET & BOX MODEL — overflow fix
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--bg-primary);
+  color: var(--text-body);
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading);
+  color: var(--text-h);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(20px, 3vw, 32px);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: clamp(18px, 2.5vw, 24px);
+}
+
+h4 {
+  font-size: 18px;
+}
+
+p {
+  margin: 0;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* Container */
+.ch-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Page wrapper */
+.ch-page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Section spacing */
+.ch-section {
+  padding: 60px 24px;
+}
+
+/* Card hover effect */
+.ch-card-hover {
+  transition: var(--transition);
+}
+.ch-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Hidden mobile */
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+  .ch-section {
+    padding: 40px 16px;
+  }
+  .ch-container {
+    padding: 0 16px;
+  }
+}
+
+/* ============================================================
+   ANT DESIGN OVERRIDES — Light Theme
+   ============================================================ */
+
+/* Override Ant primary button */
+.ant-btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  border-radius: var(--radius-btn) !important;
+}
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+}
+
+/* Override all buttons radius */
+.ant-btn {
+  border-radius: var(--radius-btn) !important;
+  transition: var(--transition) !important;
+  font-weight: 500;
+}
+
+/* Override input radius */
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-select-selector {
+  border-radius: var(--radius-input) !important;
+  border-color: var(--border-color) !important;
+}
+
+.ant-input:focus,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Override card radius */
+.ant-card {
+  border-radius: var(--radius-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Override modal radius */
+.ant-modal-content {
+  border-radius: var(--radius-modal) !important;
+}
+
+/* Override tag radius */
+.ant-tag {
+  border-radius: 6px !important;
+}
+
+/* Override progress */
+.ant-progress-line .ant-progress-inner {
+  border-radius: 99px !important;
+}
+.ant-progress-bg {
+  border-radius: 99px !important;
+  background: linear-gradient(90deg, var(--primary), var(--primary-hover)) !important;
+}
+
+/* ============================================================
+   CODE BLOCKS
+   ============================================================ */
+code {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 2px 6px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border-radius: 4px;
+}
+
+.input-error {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
