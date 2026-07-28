@@ -23,11 +23,11 @@ const ForgotPassword: React.FC = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: '#0a0f1d' }}>
-      <Card style={{ width: 400, borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.3)', border: 'none', background: '#141b2d' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: 'var(--background-color)' }}>
+      <Card style={{ width: 400, borderRadius: 12, boxShadow: '0 8px 24px rgba(0,0,0,0.3)', border: '1px solid #e5e7eb', background: '#fff' }}>
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
-          <Title level={2} style={{ color: '#fff', margin: 0 }}>Quên mật khẩu</Title>
-          <Paragraph style={{ color: '#8c9db5', marginTop: 8 }}>
+          <Title level={2} style={{ color: '#1e293b', margin: 0 }}>Quên mật khẩu</Title>
+          <Paragraph style={{ color: '#64748b', marginTop: 8 }}>
             {!sent
               ? 'Nhập email liên kết với tài khoản của bạn để khôi phục mật khẩu.'
               : 'Chúng tôi đã gửi hướng dẫn đặt lại mật khẩu về email của bạn.'}
@@ -37,14 +37,14 @@ const ForgotPassword: React.FC = () => {
         {!sent ? (
           <Form layout="vertical" onFinish={onFinish} requiredMark={false} noValidate>
             <Form.Item
-              label={<span style={{ color: '#a3b1cc' }}>Địa chỉ email</span>}
+              label={<span style={{ color: '#334155' }}>Địa chỉ email</span>}
               name="email"
               rules={[
                 { required: true, message: 'Email không được để trống' },
                 { type: 'email', message: 'Email không đúng định dạng' }
               ]}
             >
-              <Input size="large" placeholder="ten@email.com" style={{ background: '#1f2940', color: '#fff', border: '1px solid #2e3b52' }} />
+              <Input size="large" placeholder="ten@email.com" />
             </Form.Item>
 
             <Form.Item style={{ marginTop: 32 }}>

@@ -357,7 +357,6 @@ const AdminUsers: React.FC = () => {
             >
               <Option value="ROLE_STUDENT">ROLE_STUDENT (Học viên)</Option>
               <Option value="ROLE_INSTRUCTOR">ROLE_INSTRUCTOR (Giảng viên)</Option>
-              <Option value="ROLE_MODERATOR">ROLE_MODERATOR (Kiểm duyệt viên)</Option>
             </Select>
             {roleError && <div className="input-error">{roleError}</div>}
           </Form.Item>
